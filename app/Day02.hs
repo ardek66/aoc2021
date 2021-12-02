@@ -12,10 +12,10 @@ str2dir = f . words
                         "down" -> Down) $ read n
 
 part1 = uncurry (*) . foldr f (0, 0)
-  where f dir = \(h, d) -> case dir of
-                             Forward n -> (h + n, d)
-                             Up n -> (h, d - n)
-                             Down n -> (h, d + n)
+  where f dir (h, d) = case dir of
+                         Forward n -> (h + n, d)
+                         Up n -> (h, d - n)
+                         Down n -> (h, d + n)
 
 part2 = (\(a, b, _) -> a * b) . foldl' f (0, 0, 0)
   where f (h, d, a) dir = case dir of
